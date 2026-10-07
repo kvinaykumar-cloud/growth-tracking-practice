@@ -34,11 +34,58 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>
 
     <h2>Need Fish Seed?</h2>
 
-    <p>Send us your fish type, size and quantity.</p>
+<p>Send us your fish type, size and quantity.</p>
 
-    <a href="https://wa.me/919999999999" target="_blank">
+<form id="lead-form">
+
+    <label>మీ పేరు / Name</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>మొబైల్ నంబర్ / Phone</label><br>
+    <input type="tel" name="phone" required><br><br>
+
+    <label>మీ ప్రాంతం / Location</label><br>
+    <input type="text" name="location" required><br><br>
+
+    <label>ఏ చేపలు కావాలి? / Fish Type</label><br>
+    <select name="fish_type" required>
+        <option value="">Select Fish</option>
+        <option value="rohu">Rohu</option>
+        <option value="catla">Catla</option>
+        <option value="common_carp">Common Carp</option>
+        <option value="other">Other</option>
+    </select><br><br>
+
+    <label>చేప పిల్లల సైజు / Fish Seed Size</label><br>
+    <input type="text" name="fish_size" placeholder="Example: 3 inch" required><br><br>
+
+    <label>ఎంత పరిమాణం కావాలి? / Quantity</label><br>
+    <input type="text" name="quantity" placeholder="Example: 5000" required><br><br>
+
+    <button type="submit">మీ అవసరాన్ని పంపండి / Send Requirement</button>
+
+</form>
+
+<br>
+
+<a href="https://wa.me/919999999999" target="_blank">
     <button>WhatsApp Us</button>
 </a>
+<script>
+document.getElementById('lead-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
+    window.dataLayer = window.dataLayer || [];
+
+    window.dataLayer.push({
+        event: 'generate_lead',
+        fish_type: this.fish_type.value,
+        fish_size: this.fish_size.value,
+        quantity: this.quantity.value
+    });
+
+    alert('Your requirement has been submitted!');
+});
+</script>
 </body>
 </html>
